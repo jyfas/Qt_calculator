@@ -172,7 +172,8 @@ QString calculator::GetResult(QQueue<QString> &queue)
                     result = num_two / num_one;
                 }
             }
-            num = QString::number(result, 'f', 15);
+
+            num.sprintf("%f",result);
             l_stack.push(num);
         }
     }
@@ -191,16 +192,18 @@ QString calculator::GetResult(QQueue<QString> &queue)
             if(output.right(1) == ".")
             {
                 output.chop(1);
+                break;
             }
 
             tmp = output.right(1);
         }
 
+        /*
         if(output.length() > 19)
         {
             return "ERROR";
         }
-
+        */
         return output;
     }
     else

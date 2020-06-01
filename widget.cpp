@@ -44,21 +44,39 @@ Widget::~Widget()
 
 void Widget::on_pushButton_0_clicked()
 {
-    QString tmp = this->input.right(1);
+    QString tmp = this->input.right(2);
 
-    if(tmp.length() && tmp[0] == ')')       // 数字前面不能为右括号
+    if(tmp.length() && tmp[1] == ')')       // 数字前面不能为右括号
     {
         return;
     }
+
+    if(tmp.length() && tmp[1] == '0' &&
+            (tmp[0] == '+' || tmp[0] == '-' || tmp[0] == '*' || tmp[0] == '/' || tmp[0] == '('))           // 小数点前不能输入多个0
+    {
+        return;
+    }
+
+    if( ReverseLookup(this->input, ".") - ReverseLookup(this->input,"+-*/(") > 0)         // 判断小数位和整数位是否超过10位
+    {
+        if( this->input.length() - ReverseLookup(this->input, ".") > 10 ||
+                ReverseLookup(this->input,".") - ReverseLookup(this->input, "+-*/(") > 10)
+        {
+            return;
+        }
+    }
+    else
+    {
+        if(this->input.length() - ReverseLookup(this->input, "+-*/(") > 10)
+        {
+            return;
+        }
+    }
+
     if(this->calculate_flag)                // 若计算完成后按下数字键，则清除输入字符串
     {
         this->input.clear();
         this->calculate_flag = false;
-    }
-
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 15)         // 反向查找+-×/（，判断输入数字是否大于规定数字位
-    {
-        return;
     }
 
     if(this->input != "0")
@@ -83,9 +101,20 @@ void Widget::on_pushButton_1_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 15)
+    if( ReverseLookup(this->input, ".") - ReverseLookup(this->input,"+-*/(") > 0)         // 判断小数位和整数位是否超过10位
     {
-        return;
+        if( this->input.length() - ReverseLookup(this->input, ".") > 10 ||
+                ReverseLookup(this->input,".") - ReverseLookup(this->input, "+-*/(") > 10)
+        {
+            return;
+        }
+    }
+    else
+    {
+        if(this->input.length() - ReverseLookup(this->input, "+-*/(") > 10)
+        {
+            return;
+        }
     }
 
     if(this->input == "0")                  // 第一个按下0后，再次按下数字键，需清除显示
@@ -112,7 +141,7 @@ void Widget::on_pushButton_2_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 15)
+    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
     {
         return;
     }
@@ -141,7 +170,7 @@ void Widget::on_pushButton_3_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 15)
+    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
     {
         return;
     }
@@ -170,7 +199,7 @@ void Widget::on_pushButton_4_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 15)
+    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
     {
         return;
     }
@@ -199,7 +228,7 @@ void Widget::on_pushButton_5_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 15)
+    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
     {
         return;
     }
@@ -228,7 +257,7 @@ void Widget::on_pushButton_6_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 15)
+    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
     {
         return;
     }
@@ -256,7 +285,7 @@ void Widget::on_pushButton_7_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 15)
+    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
     {
         return;
     }
@@ -285,7 +314,7 @@ void Widget::on_pushButton_8_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 15)
+    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
     {
         return;
     }
@@ -314,7 +343,7 @@ void Widget::on_pushButton_9_clicked()
         this->calculate_flag = false;
     }
 
-    if( (this->input.length() - ReverseLookup(this->input,"+-*/(")) > 15)
+    if( (this->input.length() - ReverseLookup(this->input,"+-*/(")) > 16)
     {
         return;
     }
@@ -471,7 +500,7 @@ void Widget::on_pushButton_point_clicked()
     QString tmp = this->input.right(1);
     int index;
 
-    if( (this->input.length() - ReverseLookup(this->input,"+-*/(")) > 15 && (!this->calculate_flag) )
+    if( (this->input.length() - ReverseLookup(this->input,"+-*/(")) > 16 && (!this->calculate_flag) )
     {
         return;
     }
