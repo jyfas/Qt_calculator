@@ -15,7 +15,7 @@ int Widget::ReverseLookup(QString &str, const char *ch)
                 return k;
             }
         }
-    }
+        }
 
     return -1;
 }
@@ -32,7 +32,8 @@ Widget::Widget(QWidget *parent) :
 
     ui->lineEdit->setReadOnly(true);                                // 设置成只读
     ui->lineEdit->setFont(QFont("system",32,QFont::Normal));        // 设置显示字体
-    ui->lineEdit->setAlignment( Qt::AlignRight);                    // 设置文本对齐方式
+    ui->lineEdit->setAlignment(Qt::AlignRight);                    // 设置文本对齐方式
+    this->setFixedSize(480,244);
 
     ui->lineEdit->setText("0");
 }
@@ -59,8 +60,7 @@ void Widget::on_pushButton_0_clicked()
 
     if( ReverseLookup(this->input, ".") - ReverseLookup(this->input,"+-*/(") > 0)         // 判断小数位和整数位是否超过10位
     {
-        if( this->input.length() - ReverseLookup(this->input, ".") > 10 ||
-                ReverseLookup(this->input,".") - ReverseLookup(this->input, "+-*/(") > 10)
+        if(this->input.length() - ReverseLookup(this->input, ".") > 6)
         {
             return;
         }
@@ -103,8 +103,7 @@ void Widget::on_pushButton_1_clicked()
 
     if( ReverseLookup(this->input, ".") - ReverseLookup(this->input,"+-*/(") > 0)         // 判断小数位和整数位是否超过10位
     {
-        if( this->input.length() - ReverseLookup(this->input, ".") > 10 ||
-                ReverseLookup(this->input,".") - ReverseLookup(this->input, "+-*/(") > 10)
+        if(this->input.length() - ReverseLookup(this->input, ".") > 6)
         {
             return;
         }
@@ -141,9 +140,19 @@ void Widget::on_pushButton_2_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
+    if( ReverseLookup(this->input, ".") - ReverseLookup(this->input,"+-*/(") > 0)         // 判断小数位和整数位是否超过10位
     {
-        return;
+        if(this->input.length() - ReverseLookup(this->input, ".") > 6)
+        {
+            return;
+        }
+    }
+    else
+    {
+        if(this->input.length() - ReverseLookup(this->input, "+-*/(") > 10)
+        {
+            return;
+        }
     }
 
     if(this->input == "0")
@@ -170,9 +179,19 @@ void Widget::on_pushButton_3_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
+    if( ReverseLookup(this->input, ".") - ReverseLookup(this->input,"+-*/(") > 0)         // 判断小数位和整数位是否超过10位
     {
-        return;
+        if(this->input.length() - ReverseLookup(this->input, ".") > 6)
+        {
+            return;
+        }
+    }
+    else
+    {
+        if(this->input.length() - ReverseLookup(this->input, "+-*/(") > 10)
+        {
+            return;
+        }
     }
 
     if(this->input == "0")
@@ -199,9 +218,19 @@ void Widget::on_pushButton_4_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
+    if( ReverseLookup(this->input, ".") - ReverseLookup(this->input,"+-*/(") > 0)         // 判断小数位和整数位是否超过10位
     {
-        return;
+        if(this->input.length() - ReverseLookup(this->input, ".") > 6)
+        {
+            return;
+        }
+    }
+    else
+    {
+        if(this->input.length() - ReverseLookup(this->input, "+-*/(") > 10)
+        {
+            return;
+        }
     }
 
     if(this->input == "0")
@@ -228,9 +257,19 @@ void Widget::on_pushButton_5_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
+    if( ReverseLookup(this->input, ".") - ReverseLookup(this->input,"+-*/(") > 0)         // 判断小数位和整数位是否超过10位
     {
-        return;
+        if(this->input.length() - ReverseLookup(this->input, ".") > 6)
+        {
+            return;
+        }
+    }
+    else
+    {
+        if(this->input.length() - ReverseLookup(this->input, "+-*/(") > 10)
+        {
+            return;
+        }
     }
 
     if(this->input == "0")
@@ -257,9 +296,19 @@ void Widget::on_pushButton_6_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
+    if( ReverseLookup(this->input, ".") - ReverseLookup(this->input,"+-*/(") > 0)         // 判断小数位和整数位是否超过10位
     {
-        return;
+        if(this->input.length() - ReverseLookup(this->input, ".") > 6)
+        {
+            return;
+        }
+    }
+    else
+    {
+        if(this->input.length() - ReverseLookup(this->input, "+-*/(") > 10)
+        {
+            return;
+        }
     }
     if(this->input == "0")
     {
@@ -285,9 +334,19 @@ void Widget::on_pushButton_7_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
+    if( ReverseLookup(this->input, ".") - ReverseLookup(this->input,"+-*/(") > 0)         // 判断小数位和整数位是否超过10位
     {
-        return;
+        if(this->input.length() - ReverseLookup(this->input, ".") > 6)
+        {
+            return;
+        }
+    }
+    else
+    {
+        if(this->input.length() - ReverseLookup(this->input, "+-*/(") > 10)
+        {
+            return;
+        }
     }
 
     if(this->input == "0")
@@ -314,9 +373,19 @@ void Widget::on_pushButton_8_clicked()
         this->calculate_flag = false;
     }
 
-    if( this->input.length() - ReverseLookup(this->input,"+-*/(") > 16)
+    if( ReverseLookup(this->input, ".") - ReverseLookup(this->input,"+-*/(") > 0)         // 判断小数位和整数位是否超过10位
     {
-        return;
+        if(this->input.length() - ReverseLookup(this->input, ".") > 6)
+        {
+            return;
+        }
+    }
+    else
+    {
+        if(this->input.length() - ReverseLookup(this->input, "+-*/(") > 10)
+        {
+            return;
+        }
     }
 
     if(this->input == "0")
@@ -343,9 +412,19 @@ void Widget::on_pushButton_9_clicked()
         this->calculate_flag = false;
     }
 
-    if( (this->input.length() - ReverseLookup(this->input,"+-*/(")) > 16)
+    if( ReverseLookup(this->input, ".") - ReverseLookup(this->input,"+-*/(") > 0)         // 判断小数位和整数位是否超过10位
     {
-        return;
+        if(this->input.length() - ReverseLookup(this->input, ".") > 6)
+        {
+            return;
+        }
+    }
+    else
+    {
+        if(this->input.length() - ReverseLookup(this->input, "+-*/(") > 10)
+        {
+            return;
+        }
     }
 
     if(this->input == "0")
@@ -500,7 +579,7 @@ void Widget::on_pushButton_point_clicked()
     QString tmp = this->input.right(1);
     int index;
 
-    if( (this->input.length() - ReverseLookup(this->input,"+-*/(")) > 16 && (!this->calculate_flag) )
+    if(this->calculate_flag)
     {
         return;
     }
